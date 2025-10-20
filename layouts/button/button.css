@@ -1,0 +1,74 @@
+/* === BASE BUTTON LARGE === */
+.btn-large {
+  display: inline-block;
+  font-size: 1.25rem; /* maior que o padrão */
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  line-height: 1.5;
+  border: 1px solid transparent;
+  transition: all 0.2s ease-in-out;
+  color: #fff;
+  background-color: #0d6efd; /* Azul padrão Bootstrap */
+  cursor: pointer;
+}
+
+/* === STATES === */
+
+/* Enabled (padrão) */
+.btn-large:enabled {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+/* Hover */
+.btn-large:hover:enabled {
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
+}
+
+/* Focus */
+.btn-large:focus:enabled {
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.5);
+}
+
+/* Active */
+.btn-large:active:enabled {
+  background-color: #0a58ca;
+  border-color: #0a53be;
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+
+/* Disabled */
+.btn-large:disabled {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+/* Valid */
+.btn-large.is-valid {
+  border-color: #198754;
+  background-color: #198754;
+}
+.btn-large.is-valid:hover {
+  background-color: #157347;
+}
+
+/* Invalid */
+.btn-large.is-invalid {
+  border-color: #dc3545;
+  background-color: #dc3545;
+}
+.btn-large.is-invalid:hover {
+  background-color: #bb2d3b;
+}
+
+/* Required (poderia ser usado em forms, com pseudo-elemento) */
+.btn-large.is-required::after {
+  content: " *";
+  color: #ffc107;
+  font-weight: bold;
+}

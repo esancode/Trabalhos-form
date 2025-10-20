@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca de Form Layouts</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f5f5f5;
+    }
+
+    header {
+      background: #1e1e1e;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      background: #333;
+      padding: 5px;
+    }
+
+    nav button {
+      margin: 5px;
+      background: #444;
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    nav button:hover {
+      background: #666;
+    }
+
+    #content {
+      display: flex;
+      flex-direction: column;
+      height: auto;
+      padding: 30px;
+      background: white;
+      margin: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    Biblioteca de Form Layouts
+  </header>
+
+  <nav id="menu"></nav>
+
+  <main id="content">
+    <p>Selecione um layout no menu acima para visualizar.</p>
+  </main>
+
+  <script>
+    const layouts = [
+      "AUDIO-FORM-LAYOUT", "ALERT-FORM-LAYOUT", "BADGE-FORM-LAYOUT", "BUTTON-FORM-LAYOUT",
+      "CHEKBOX-FORM-LAYOUT", "COLOR-FORM-LAYOUT", "DATALIST-FORM-LAYOUT", "DATE-FORM-LAYOUT",
+      "EMAIL-FORM-LAYOUT", "FIELDSET-FORM-LAYOUT", "FILE-FORM-LAYOUT", "HIDDEN-FORM-LAYOUT",
+      "INPUT-FORM-LAYOUT", "ICON-FORM-LAYOUT", "IMAGE-FORM-LAYOUT", "LABEL-FORM-LAYOUT",
+      "LINK-FORM-LAYOUT", "MENU-FORM-LAYOUT", "NUMBER-FORM-LAYOUT", "OUTPUT-FORM-LAYOUT",
+      "PASSWORD-FORM-LAYOUT", "RADIO-FORM-LAYOUT", "RANGE-FORM-LAYOUT", "RESET-FORM-LAYOUT",
+      "SELECT-FORM-LAYOUT", "SUBMIT-FORM-LAYOUT", "TEXTAREA-FORM-LAYOUT", "TEXT-FORM-LAYOUT",
+      "TIME-FORM-LAYOUT"
+    ];
+
+    const menu = document.getElementById("menu");
+    const content = document.getElementById("content");
+
+    layouts.forEach(layout => {
+      const btn = document.createElement("button");
+      btn.textContent = layout.split("-")[0]; 
+      btn.onclick = () => showLayout(layout);
+      menu.appendChild(btn);
+    });
+
+    async function showLayout(layoutName) {
+      const folder = layoutName
+        .toLowerCase()
+        .replace("-form-layout", "")
+        .trim(); 
+
+      try {
+        const htmlPath = `layouts/${folder}/${folder}.html`;
+        const cssPath = `layouts/${folder}/${folder}.css`;
+
+        const htmlResponse = await fetch(htmlPath);
+        if (!htmlResponse.ok) throw new Error("HTML não encontrado");
+        const html = await htmlResponse.text();
+
+        document.querySelectorAll('link[data-layout-style]').forEach(link => link.remove());
+
+        const cssResponse = await fetch(cssPath);
+        if (cssResponse.ok) {
+          const link = document.createElement("link");
+          link.rel = "stylesheet";
+          link.href = cssPath;
+          link.setAttribute('data-layout-style', folder);
+          document.head.appendChild(link);
+        }
+
+        content.innerHTML = html;
+
+      } catch (error) {
+        content.innerHTML = `<p style="color:red;">Erro ao carregar <b>${layoutName}</b>.<br>Verifique se existe a pasta <b>${folder}</b> com os arquivos <b>${folder}.html</b> e <b>${folder}.css</b>.</p>`;
+      }
+    }
+  </script>
+</body>
+</html>
