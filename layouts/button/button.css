@@ -1,73 +1,280 @@
-/* === BASE BUTTON LARGE === */
+/* BASE BUTTON LARGE */
 .btn-large {
+  position: relative;
   display: inline-block;
-  font-size: 1.25rem; /* maior que o padrão */
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
+  font-size: 1.1rem;
+  padding: 0.9rem 2rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  color: #ffffff;
+  background: linear-gradient(135deg, #007bff, #0056d2);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  letter-spacing: 0.5px;
+  overflow: hidden;
+  margin: 0.75rem; 
+  min-width: 180px; 
+  text-align: center;
+}
+
+.btn-large::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.25), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+/* Hover */
+.btn-large:hover:enabled {
+  background: linear-gradient(135deg, #1a82ff, #0047b3);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 102, 255, 0.3);
+}
+.btn-large:hover::before {
+  opacity: 1;
+}
+
+/* Foco */
+.btn-large:focus:enabled {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
+}
+
+/* Active (clique) */
+.btn-large:active:enabled {
+  transform: scale(0.97);
+  background: linear-gradient(135deg, #0056d2, #003a8c);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Desabilitado */
+.btn-large:disabled {
+  background: linear-gradient(135deg, #d1d5db, #9ca3af);
+  color: #f3f4f6;
+  border-color: transparent;
+  cursor: not-allowed;
+  box-shadow: none;
+  opacity: 0.75;
+}
+
+/* === VARIAÇÕES === */
+
+/* Sucesso */
+.btn-large.is-valid {
+  background: linear-gradient(135deg, #28a745, #1e7e34);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+.btn-large.is-valid:hover {
+  background: linear-gradient(135deg, #34c759, #1f8b3b);
+}
+
+/* Erro */
+.btn-large.is-invalid {
+  background: linear-gradient(135deg, #dc3545, #a71d2a);
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+.btn-large.is-invalid:hover {
+  background: linear-gradient(135deg, #ff4d5e, #b02a37);
+}
+
+/* Obrigatório */
+.btn-large.is-required::after {
+  content: " *";
+  color: #ffd43b;
+  font-weight: 700;
+}
+
+/* Layout da biblioteca */
+.library-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 1rem;
+}
+
+/* === BASE BUTTON MEDIUM (visual moderno e consistente com btn-large) === */
+.btn-medium {
+  position: relative;
+  display: inline-block;
+  font-size: 1rem;
+  padding: 0.65rem 1.5rem;
+  border-radius: 0.6rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  color: #ffffff;
+  background: linear-gradient(135deg, #007bff, #0056d2);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  letter-spacing: 0.4px;
+  overflow: hidden;
+  margin: 0.6rem;
+  min-width: 150px;
+  text-align: center;
+}
+
+/* Brilho sutil */
+.btn-medium::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.25), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+/* Hover */
+.btn-medium:hover:enabled {
+  background: linear-gradient(135deg, #1a82ff, #0047b3);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 102, 255, 0.25);
+}
+.btn-medium:hover::before {
+  opacity: 1;
+}
+
+/* Foco */
+.btn-medium:focus:enabled {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+/* Clique (Active) */
+.btn-medium:active:enabled {
+  transform: scale(0.97);
+  background: linear-gradient(135deg, #0056d2, #003a8c);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+/* Desabilitado */
+.btn-medium:disabled {
+  background: linear-gradient(135deg, #d1d5db, #9ca3af);
+  color: #f3f4f6;
+  border-color: transparent;
+  cursor: not-allowed;
+  opacity: 0.75;
+  box-shadow: none;
+}
+
+/* VARIAÇÕES */
+
+/* Sucesso */
+.btn-medium.is-valid {
+  background: linear-gradient(135deg, #28a745, #1e7e34);
+  box-shadow: 0 3px 10px rgba(40, 167, 69, 0.3);
+}
+.btn-medium.is-valid:hover {
+  background: linear-gradient(135deg, #34c759, #1f8b3b);
+}
+
+/* Erro */
+.btn-medium.is-invalid {
+  background: linear-gradient(135deg, #dc3545, #a71d2a);
+  box-shadow: 0 3px 10px rgba(220, 53, 69, 0.3);
+}
+.btn-medium.is-invalid:hover {
+  background: linear-gradient(135deg, #ff4d5e, #b02a37);
+}
+
+/* Obrigatório */
+.btn-medium.is-required::after {
+  content: " *";
+  color: #ffd43b;
+  font-weight: 700;
+}
+
+/* BASE BUTTON SMALL */
+
+.btn-small {
+  display: inline-block;
+  font-size: 0.875rem; /* menor que o medium */
+  padding: 0.375rem 0.75rem; /* compacto */
+  border-radius: 0.25rem; /* cantos levemente arredondados */
   font-weight: 500;
   line-height: 1.5;
   border: 1px solid transparent;
   transition: all 0.2s ease-in-out;
   color: #fff;
-  background-color: #0d6efd; /* Azul padrão Bootstrap */
+  background-color: #0d6efd;
   cursor: pointer;
+  margin: 0.25rem;
 }
 
-/* === STATES === */
+/* STATES */
 
 /* Enabled (padrão) */
-.btn-large:enabled {
+.btn-small:enabled {
   background-color: #0d6efd;
   border-color: #0d6efd;
 }
 
 /* Hover */
-.btn-large:hover:enabled {
+.btn-small:hover:enabled {
   background-color: #0b5ed7;
   border-color: #0a58ca;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(13, 110, 253, 0.25);
 }
 
 /* Focus */
-.btn-large:focus:enabled {
+.btn-small:focus:enabled {
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.4);
 }
 
 /* Active */
-.btn-large:active:enabled {
+.btn-small:active:enabled {
   background-color: #0a58ca;
   border-color: #0a53be;
   box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  transform: translateY(0);
 }
 
 /* Disabled */
-.btn-large:disabled {
+.btn-small:disabled {
   background-color: #6c757d;
   border-color: #6c757d;
   cursor: not-allowed;
   opacity: 0.65;
+  box-shadow: none;
 }
 
 /* Valid */
-.btn-large.is-valid {
+.btn-small.is-valid {
   border-color: #198754;
   background-color: #198754;
 }
-.btn-large.is-valid:hover {
+.btn-small.is-valid:hover:enabled {
   background-color: #157347;
+  border-color: #146c43;
+  box-shadow: 0 2px 4px rgba(25, 135, 84, 0.3);
 }
 
 /* Invalid */
-.btn-large.is-invalid {
+.btn-small.is-invalid {
   border-color: #dc3545;
   background-color: #dc3545;
 }
-.btn-large.is-invalid:hover {
+.btn-small.is-invalid:hover:enabled {
   background-color: #bb2d3b;
+  border-color: #b02a37;
+  box-shadow: 0 2px 4px rgba(220, 53, 69, 0.3);
 }
 
-/* Required (poderia ser usado em forms, com pseudo-elemento) */
-.btn-large.is-required::after {
+/* Required */
+.btn-small.is-required::after {
   content: " *";
   color: #ffc107;
   font-weight: bold;

@@ -1,0 +1,75 @@
+/* BASE CHECKBOX LARGE */
+.form-check-large {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0;
+  font-size: 1.1rem; /* ligeiramente maior */
+}
+
+.form-check-large input[type="checkbox"] {
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  border-radius: 0.25rem;
+  border: 2px solid #0d6efd;
+  accent-color: #0d6efd; /* cor padrão Bootstrap */
+  transition: all 0.2s ease-in-out;
+}
+
+/* STATES */
+
+/* Enabled (padrão) */
+.form-check-large input[type="checkbox"]:enabled {
+  border-color: #0d6efd;
+}
+
+/* Hover */
+.form-check-large input[type="checkbox"]:hover:enabled {
+  border-color: #0b5ed7;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+}
+
+/* Focus */
+.form-check-large input[type="checkbox"]:focus:enabled {
+  outline: none;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.3);
+}
+
+/* Active */
+.form-check-large input[type="checkbox"]:active:enabled {
+  background-color: #0a58ca;
+  border-color: #0a53be;
+}
+
+/* Disabled */
+.form-check-large input[type="checkbox"]:disabled {
+  background-color: #e9ecef;
+  border-color: #adb5bd;
+  cursor: not-allowed;
+}
+
+/* Valid */
+.form-check-large.is-valid input[type="checkbox"] {
+  border-color: #198754;
+  accent-color: #198754;
+}
+.form-check-large.is-valid label {
+  color: #198754;
+}
+
+/* Invalid */
+.form-check-large.is-invalid input[type="checkbox"] {
+  border-color: #dc3545;
+  accent-color: #dc3545;
+}
+.form-check-large.is-invalid label {
+  color: #dc3545;
+}
+
+/* Required */
+.form-check-large.is-required label::after {
+  content: " *";
+  color: #ffc107;
+  font-weight: bold;
+}
